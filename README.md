@@ -1,43 +1,38 @@
-# Laravel Quiz System
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+# Hệ thống làm bài kiểm tra
 
 ## Overview
 
-This quiz system allows users to participate in quizzes, view their results, and compete on leaderboards.
+Hệ thống cho phép thành viên/khách có thể làm bài test - kiểm tra ở trên hệ thống. Hệ thống sẽ tự động chấm điểm và hiển
+thị kết quả sau khi làm xong bài test. Hệ thống cũng sẽ hiển thị bảng xếp hạng của tất cả thành viên đã tham gia làm bài
+test.
 
 ## Database Schema
 
-![image](https://github.com/kareemaladawy/laravel-quiz-system/assets/62149929/0f00b4e8-74b5-45e3-852c-d1980122e13e)
+![image](https://i.ibb.co/HKRnGvX/quiz-system.png)
 
-## Features
+## Tính năng
 
-#### Admin Features
+#### Tính năng Admin
 
--   Manage other admins
--   Manage quizzes
--   Manage questions and options
--   View all the tests taken on the system
+- Quản lý các admin khác
+- Quản lý các bài test
+- Quản lý câu hỏi và lựa chọn
+- Hiện thị kết quả và bảng xếp hạng của bài test
 
-#### User Features
+#### Tính năng người dùng
 
--   Log in and register
--   Participate in quizzes as a guest or registered user
--   View a specific quiz's results and leaderboard
--   View the overall leaderboard, which ranks all users based on their test results
+- Đăng ký đăng nhập
+- Làm bài test
+- Xem kết quả sau khi làm bài test, bảng xếp hạng
+- Xem lịch sử làm bài test và bảng xêp hạng của toàn hệ thống
 
-## Getting Started
+#### Điều kiện tiên quyết
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-#### Prerequisites
-
--   Composer dependency manager
--   PHP 8+
--   Laravel 10.18+
--   Livewire 3
+- Composer dependency manager
+- PHP 8+
+- Laravel 10.18+
+- Livewire 3
+- Mysql Database
 
 #### Installation
 
@@ -53,7 +48,7 @@ git clone https://github.com/kareemaladawy/laravel.git
 composer install
 ```
 
-3- Configure the environment:
+3- Configure the environment: (Copy file .env.example rồi đổt thành env)
 
 ```
 cp .env.example .env
@@ -77,22 +72,3 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-## Running Tests
-
-To run tests, run the following command
-
-```
-  php artisan test
-```
-## Screenshots
-
-<a href="https://github.com/kareemaladawy/laravel-quiz-system/issues/1">Admin Screenshots</a> <br>
-<a href="https://github.com/kareemaladawy/laravel-quiz-system/issues/2">User Screenshots</a>
-
-## Authors
-
--   [@kareemalaadwy](https://www.github.com/kareemalaadwy)
-
-## Contributing
-
-Contributions are always welcome!
