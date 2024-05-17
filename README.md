@@ -32,6 +32,8 @@ test.
 - PHP 8+
 - Laravel 10.18+
 - Livewire 3
+- Tailwind CSS 
+- Alpine JS
 - Mysql Database
 
 #### Installation
