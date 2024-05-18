@@ -46,7 +46,7 @@ class HomeController extends Controller
         $totalSecondsLeft = now()->diffInSeconds($test->created_at->addMinutes($quiz->limited_time));
         $minutesLeft = intdiv($totalSecondsLeft, 60);
         $secondsLeft = $totalSecondsLeft % 60;
-        if ($minutesLeft <= 0) {
+        if ($minutesLeft <= 0 && $secondsLeft <= 0) {
             $test->update([
                 'result' => $test->hasCorrectAnswer()->count(),
                 'time_spent' => $minutesLeft

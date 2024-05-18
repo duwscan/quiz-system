@@ -37,7 +37,7 @@
                         <div class="mt-4">
                             <x-input-label for="is_admin" value="Admin"/>
                             <x-text-input wire:model.defer="is_admin" id="is_admin" class="block mt-1"
-                                          type="checkbox" name="is_admin" required/>
+                                          type="checkbox" name="is_admin"/>
                             <x-input-error :messages="$errors->get('is_admin')" class="mt-2"/>
                         </div>
 

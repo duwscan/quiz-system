@@ -17,7 +17,7 @@ class AdminForm extends Component
         'name' => 'required|min:6',
         'email' => 'required|email',
         'password' => 'required|string|min:6',
-        'is_admin' => 'boolean'
+        'is_admin' => 'nullable|boolean'
     ];
 
     public function save()
@@ -28,7 +28,7 @@ class AdminForm extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'is_admin' => $this->is_admin,
+            'is_admin' => $this->is_admin ?? 0,
         ]);
 
         session()->flash('message', 'Saved.');

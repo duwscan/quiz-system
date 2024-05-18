@@ -28,13 +28,13 @@ test.
 
 #### Điều kiện tiên quyết
 
-- Composer dependency manager
-- PHP 8+
-- Laravel 10.18+
-- Livewire 3
-- Tailwind CSS 
-- Alpine JS
-- Mysql Database
+- Composer dependency manager -  quản lý các thư viện , package dùng trong framework laravel 
+- PHP 8+ - Ngôn ngữ lập trình chính của Laravel
+- Laravel 10.18+ -framework
+- Livewire 3 - package cho phép tạo ra các component UI mà không cần viết javascript -> lấy dữ liệu và binding dữ liệu từ server ra view 
+- Tailwind CSS - là thư viện css
+- Alpine JS - thư viện javascript tương tác với dom
+- Mysql Database lưu trữ data 
 
 #### Installation
 
@@ -71,6 +71,10 @@ php artisan migrate --seed
 6- Start the development server:
 
 ```
+tab 1
 php artisan serve
+tab 2
+npm install
+npm run dev
 ```
 
