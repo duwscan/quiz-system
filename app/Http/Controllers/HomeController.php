@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Test;
 use Illuminate\Http\Request;
@@ -42,20 +43,18 @@ class HomeController extends Controller
                 ]);
             }
         }
-        $timeLeft = now()->diffInMinutes($test->created_at->addMinutes($quiz->limited_time)) + 1;
-        if ($timeLeft <= 0) {
+        $totalSecondsLeft = now()->diffInSeconds($test->created_at->addMinutes($quiz->limited_time));
+        $minutesLeft = intdiv($totalSecondsLeft, 60);
+        $secondsLeft = $totalSecondsLeft % 60;
+        if ($minutesLeft <= 0) {
             $test->update([
                 'result' => $test->hasCorrectAnswer()->count(),
-                'time_spent' => $timeLeft
+                'time_spent' => $minutesLeft
             ]);
             return redirect()->route('results.show', $test);
         }
-        $questionsPaginated = $quiz->questions()->with('options')->paginate(3);
-        $hasNextPage = $questionsPaginated->hasMorePages();
-        $hasPreviousPage = $questionsPaginated->currentPage() > 1;
-        $currentPage = $questionsPaginated->currentPage();
-        $questions = collect($questionsPaginated->items());
-        return view('front.quizzes.show', compact('quiz', 'questions', 'hasNextPage', 'hasPreviousPage', 'currentPage', 'test', 'timeLeft'));
+        $questions = $quiz->questions()->with('options')->get();
+        return view('front.quizzes.show', compact('quiz', 'questions', 'test', 'minutesLeft', 'secondsLeft'));
     }
 
     public function isSubmitedTest(Test $test)

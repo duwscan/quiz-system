@@ -15,7 +15,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="mb-4">
                         <a href="{{ route('question.create') }}"
-                            class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-gray-700">
+                            class="inline-flex items-center rounded-md border border-transparent bg-yellow-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-yellow-200">
                             Tạo câu hỏi
                         </a>
                     </div>
@@ -49,8 +49,8 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('question.edit', $question->id) }}"
-                                                class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-gray-700">
-                                                Edit
+                                                class="inline-flex items-center rounded-md border border-transparent bg-yellow-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-yellow-200">
+                                                Sửa
                                             </a>
                                             <button wire:click="delete({{ $question }})"
                                                 class="rounded-md border border-transparent bg-red-200 px-4 py-2 text-xs uppercase text-red-500 hover:bg-red-300 hover:text-red-700">

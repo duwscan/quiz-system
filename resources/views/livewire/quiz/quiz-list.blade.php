@@ -15,7 +15,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="mb-4">
                         <a href="{{ route('quiz.create') }}"
-                            class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-gray-700">
+                            class="inline-flex items-center rounded-md border border-transparent bg-yellow-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-yellow-200">
                             Tạo bài kiểm tra
                         </a>
                     </div>
@@ -85,7 +85,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('quiz.edit', $quiz) }}"
-                                                class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-gray-700">
+                                                class="inline-flex items-center rounded-md border border-transparent bg-yellow-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-yellow-200">
                                                 Sửa
                                             </a>
                                             <button wire:click="delete({{ $quiz->id }})"

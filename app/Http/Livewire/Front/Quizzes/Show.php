@@ -8,8 +8,8 @@ use App\Models\Quiz;
 use App\Models\Test;
 use App\Models\Answer;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class Show extends Component
@@ -17,12 +17,12 @@ class Show extends Component
     public Quiz $quiz;
 
     public Collection $questions;
+    public int $questionCount;
     public Collection $questionsState;
     public int $currentPage = 1;
-    public int $currentQuestionIndex = 1;
-    public int $timeLeft;
-    public bool $hasNextPage = true;
-    public bool $hasPreviousPage = false;
+    public int $currentQuestionsIndex = 1;
+    public int $minutesLeft;
+    public int $secondsLeft;
     public array $answersOfQuestions = [];
     public $anwsers;
 
@@ -30,7 +30,6 @@ class Show extends Component
 
     public function mount()
     {
-        $this->questionsState = collect($this->questions);
         $this->questions->each(function ($question) {
             $this->answersOfQuestions[$question->id] = Answer::query()
                 ->where('question_id', $question->id)
@@ -41,7 +40,6 @@ class Show extends Component
 
     public function updating()
     {
-        $this->questionsState = collect($this->questions);
     }
 
     public function updatedAnswersOfQuestions($value, $questionId)
@@ -60,18 +58,6 @@ class Show extends Component
     function getQuestionsCountProperty(): int
     {
         return $this->questions->count();
-    }
-
-    public
-    function nextQuestions()
-    {
-        $this->redirect(route('quiz.show', ['quiz' => $this->quiz, 'page' => $this->currentPage + 1]));
-    }
-
-    public
-    function previousQuestions()
-    {
-        $this->redirect(route('quiz.show', ['quiz' => $this->quiz, 'page' => $this->currentPage - 1]));
     }
 
     public

@@ -20,7 +20,7 @@ class Quiz extends Model
 
     protected $casts = [
         'published' => 'boolean',
-        'public'    => 'boolean',
+        'public' => 'boolean',
     ];
 
     public function getRouteKeyName()
@@ -42,4 +42,37 @@ class Quiz extends Model
     {
         return $q->where('published', true);
     }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
+
+    public function isDoneByUser($user)
+    {
+        if (!isset($user)) {
+            return null;
+        }
+        $this->tests()->where('user_id', $user->id)->each(function ($test) {
+
+            if (now()->diffInMinutes($test->created_at->addMinutes($this->limited_time)) <= 0) {
+                $test->time_spent = $this->limited_time;
+                $test->save();
+            }
+        });
+        if ($this->tests()->where('user_id', $user->id)->exists() && $this->tests()->where('user_id', $user->id)->first()->time_spent !== null) {
+            return $this->tests()->where('user_id', $user->id)->where('quiz_id', $this->id)->first();
+        }
+        return null;
+    }
+
+    public function needContinue($user)
+    {
+        if (!isset($user)) {
+            return null;
+        }
+        return $this->tests()->where('user_id', $user->id)->exists() && $this->tests()->where('user_id', $user->id)->first()->time_spent === null;
+    }
+
+
 }

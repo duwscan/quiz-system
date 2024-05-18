@@ -10,14 +10,14 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="w-full sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @if (!$quiz->public && !auth()->check())
                         <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-700">
                             <span class="inline-block align-middle mr-8">
                                  Bài kiểm tra này chỉ dành cho thành viên <a href="{{ route('login') }}"
-                                                                                            class="hover:underline">ĐĂNG NHẬP</a> hoặc <a
+                                                                             class="hover:underline">ĐĂNG NHẬP</a> hoặc <a
                                     href="{{ route('register') }}"
                                     class="hover:underline"> ĐĂNG KÝ</a>
                             </span>
@@ -26,11 +26,9 @@
                         @livewire('front.quizzes.show', [
                         'quiz' => $quiz ,
                         'questions' => $questions,
-                        'hasNextPage'=> $hasNextPage,
-                        'hasPreviousPage' => $hasPreviousPage,
-                        'currentPage' => $currentPage,
                         'test'=> $test,
-                        'timeLeft' => $timeLeft,
+                        'minutesLeft' => $minutesLeft,
+                        'secondsLeft' => $secondsLeft,
                         ])
                     @endif
                 </div>

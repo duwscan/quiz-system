@@ -12,11 +12,12 @@ class AdminForm extends Component
     public $name;
     public $email;
     public $password;
-
+    public $is_admin;
     protected $rules = [
         'name' => 'required|min:6',
         'email' => 'required|email',
         'password' => 'required|string|min:6',
+        'is_admin' => 'boolean'
     ];
 
     public function save()
@@ -27,7 +28,7 @@ class AdminForm extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'is_admin' => 1
+            'is_admin' => $this->is_admin,
         ]);
 
         session()->flash('message', 'Saved.');

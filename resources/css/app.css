@@ -7,6 +7,10 @@
     @apply w-full border-0 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring !important;
 }
 
+.select2, .select2 option {
+    width: 100%;
+}
+
 .select2-dropdown {
     @apply absolute block w-auto box-border bg-white shadow-lg border-blue-200 z-50 float-left;
 }
